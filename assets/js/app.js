@@ -106,7 +106,7 @@ const loading_finish = () => {
 }
 
 window.onload = function () {
-    // loading_finish();
+    loading_finish();
 
     append_video("./test_video/video_1.mp4");
     append_video("./test_video/video_2.mp4");
