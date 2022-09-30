@@ -1,9 +1,9 @@
 var notify_hidden, timer_notify, swiper;
 
 const notify = (text) => {
-    const error_box = document.querySelector(".error_box_cst");
-    const error_text = document.querySelector(".error_text_cst");
-    const scroll_top = document.querySelector(".btn-scroll-top");
+    let error_box = document.querySelector(".error_box_cst");
+    let error_text = document.querySelector(".error_text_cst");
+    let scroll_top = document.querySelector(".btn-scroll-top");
 
     let notify_hide = function () {
         error_box.style.marginBottom = "-150px";
@@ -27,6 +27,18 @@ const notify = (text) => {
 
     clearTimeout(timer_notify);
     timer_notify = setTimeout(notify_hide, 2500);
+}
+
+const is_attention_splash = () => {
+    document.querySelector(".is-attention-splash").style.display = "";
+}
+
+const close_attention_splash = () => {
+    let splash = document.querySelector(".is-attention-splash");
+    splash.style.marginTop = "-100vh"
+    setTimeout(function () {
+        splash.style.display = "none"
+    }, 600)
 }
 
 const play_control = (slide, collector) => {
@@ -80,10 +92,12 @@ const append_video = (file_url, swiper=null) => {
 
     array.innerHTML = array.innerHTML + `
         <div class="swiper-slide">
-            <video autoplay loop onclick="play_video(this)">
-                <source src="${file_url}" type="video/mp4">
-            </video>
-            <div class="play-button" onclick="play_video(this)"></div>
+            <div class="swiper-collector">
+                <video autoplay loop onclick="play_video(this)">
+                    <source src="${file_url}" type="video/mp4">
+                </video>
+                <div class="play-button" onclick="play_video(this)"></div>
+            </div>
         </div>
     `;
 
@@ -107,6 +121,7 @@ const loading_finish = () => {
 
 window.onload = function () {
     loading_finish();
+    is_attention_splash();
 
     append_video("./test_video/video_1.mp4");
     append_video("./test_video/video_2.mp4");

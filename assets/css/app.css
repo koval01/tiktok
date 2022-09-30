@@ -43,6 +43,39 @@ body {
   background-position: center;
 }
 
+.is-attention-splash {
+  position: fixed;
+  z-index: 9999;
+  background: var(--theme-background-color);
+  width: 100vw;
+  height: 100vh;
+  transition: margin-top 0.6s;
+}
+.is-attention-splash > div {
+  position: relative;
+  top: 30%;
+  text-align: center;
+  transition: all 0.8s;
+  margin: auto;
+}
+.is-attention-splash > div > h3 {
+  color: var(--theme-text-color);
+}
+.is-attention-splash > div > span {
+  color: var(--theme-text-color);
+  display: block;
+  margin: auto;
+  max-width: 650px;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.is-attention-splash > div > button {
+  margin-top: 3em;
+  width: 250px !important;
+  border-color: transparent !important;
+  transition: background-color 600ms;
+}
+
 .no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -147,13 +180,23 @@ body {
   align-items: center;
   border-radius: 0.7rem;
 }
-.swiper-slide > video {
+.swiper-slide > .swiper-collector {
   display: block;
   width: 90%;
-  border-radius: 1.2rem;
-  object-fit: contain;
+  height: 100%;
 }
-.swiper-slide > .play-button {
+.swiper-slide > .swiper-collector > video {
+  object-fit: contain;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 1.2rem;
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide > .swiper-collector > .play-button {
   position: absolute;
   width: 100%;
   height: 100%;
